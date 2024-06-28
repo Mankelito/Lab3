@@ -9,7 +9,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() {
+    print('Create State');
+    return _MyHomePageState();
+  }
   
 }
 
@@ -18,6 +21,53 @@ class _MyHomePageState extends State<MyHomePage> {
   String icono= "assets/icons/martin.svg";
   String iconoResultado="assets/icons/Neutral.svg";
   String resultado = " ";
+
+  _MyHomePageState() {
+    print('Constructor');
+  }
+
+  @override
+  void initState() {
+    print('Objeto Init');
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    print('Cambio Dependencias');
+    super.didChangeDependencies();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    print('rebuild');
+    super.setState(fn);
+  }
+
+  @override
+  void didUpdateWidget(covariant MyHomePage oldWidget) {
+    print('Widget Actualizado');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void deactivate() {
+    print('Widget removido temporalmente');
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    print('Widget removido permanentemente');
+    super.dispose();
+  }
+
+  @override
+  void reassemble() {
+    print('Hot Reload App');
+    super.reassemble();
+  }
+
 
   void _incrementCounter() {
     setState(() {
@@ -89,6 +139,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('Build Realizado');
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(243, 203, 243, 1),
