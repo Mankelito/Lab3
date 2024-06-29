@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
@@ -123,18 +124,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _goToList()
   {
-     Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const SecondScreen()),
-  );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SecondScreen()),
+    );
   }
 
   void _goToDetail()
   {
-     Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const ThirdScreen()),
-  );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ThirdScreen()),
+    );
   }
 
   @override
@@ -145,6 +146,33 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(243, 203, 243, 1),
         title: Text(widget.title),
+      ),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: null,
+              child: const Text('Ejemplo Card'),
+            ),
+            ElevatedButton(
+              onPressed: _goToList,
+              child: const Text('Lista'),
+            ),
+            ElevatedButton(
+              onPressed: _goToDetail,
+              child: const Text('Detalle'),
+            ),
+            ElevatedButton(
+              onPressed: null,
+              child: const Text('Sensores'),
+            ),
+            ElevatedButton(
+              onPressed: null,
+              child: const Text('Gestos'),
+            ),
+          ]
+        )
       ),
       body: Center(
         child: Card(
@@ -167,21 +195,18 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  FloatingActionButton(
+                  ElevatedButton(
                     onPressed: _incrementCounter,
-                    tooltip: 'Incrementar',
                     child: const Icon(Icons.add_box),
                   ),
 
-                  FloatingActionButton(
+                  ElevatedButton(
                     onPressed: _resetCounter,
-                    tooltip: 'Resetear',
                     child: SvgPicture.asset(icono)
                   ),
 
-                  FloatingActionButton(
+                  ElevatedButton(
                     onPressed: _decreaseCounter,
-                    tooltip: 'Disminuir',
                     child: const Icon(Icons.exposure_minus_1),
                   ),
                 ], 
@@ -190,24 +215,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      persistentFooterAlignment: AlignmentDirectional.bottomCenter,
-      persistentFooterButtons: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FloatingActionButton(
-              onPressed: _goToList,
-              tooltip: 'Ir a Lista',
-              child: const Icon(Icons.list),
-            ),
-            FloatingActionButton(
-              onPressed: _goToDetail,
-              tooltip: 'Ir a Detalle',
-              child: const Icon(Icons.line_style),
-            ),
-          ]
-        )
-     ],
     );
   }
 }
